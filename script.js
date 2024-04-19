@@ -16,23 +16,70 @@ function draw(){
 
     generateBoard(8);
 
-    let button8 = document.querySelector('#8')
-    let button16 = document.querySelector('#16')
-    let button32 = document.querySelector('#32')
-    let button64 = document.querySelector('#64')
+    let button8 = document.querySelector('#s8');
+    let button16 = document.querySelector('#s16');
+    let button32 = document.querySelector('#s32');
+    let button64 = document.querySelector('#s64');
 
     button8.addEventListener('click', function(e) {
+        let drawBoard = document.querySelector('.draw-board');
+        while(drawBoard.firstChild) {
+            drawBoard.firstChild.remove()
+        }
+        generateBoard(e.target.textContent);
+        const items = document.getElementsByClassName('item')
+        for (const item of items) {
+            item.addEventListener('mousedown', changeColor);
+        }
+    })
+
+    button16.addEventListener('click', function(e) {
         const drawBoard = document.querySelector('.draw-board');
         while(drawBoard.firstChild) {
             drawBoard.firstChild.remove()
         }
         generateBoard(e.target.textContent);
         const items = document.getElementsByClassName('item')
+        for (const item of items) {
+            item.addEventListener('mousedown', changeColor);
+        }
     })
+
+    button32.addEventListener('click', function(e) {
+        const drawBoard = document.querySelector('.draw-board');
+        while(drawBoard.firstChild) {
+            drawBoard.firstChild.remove()
+        }
+        generateBoard(e.target.textContent);
+        const items = document.getElementsByClassName('item')
+        for (const item of items) {
+            item.addEventListener('mousedown', changeColor);
+        }
+    })
+
+    button64.addEventListener('click', function(e) {
+        const drawBoard = document.querySelector('.draw-board');
+        while(drawBoard.firstChild) {
+            drawBoard.firstChild.remove()
+        }
+        generateBoard(e.target.textContent);
+        const items = document.getElementsByClassName('item')
+        for (const item of items) {
+            item.addEventListener('mousedown', changeColor);
+        }
+    })
+
+
+    const items = document.getElementsByClassName('item');
+    for(const item of items) {
+        item.addEventListener('mousedown', changeColor)
+    }
 
     function changeColor(e) {
         const color = document.querySelector('#color');
-        e.target.style.backgrounColor = color.value;
-        e.target.style.outline = 'none';
+        e.target.style.backgroundColor = color.value;
+        e.target.style.outline = 'none'
     }
 }
+
+draw()
